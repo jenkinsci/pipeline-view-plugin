@@ -59,6 +59,7 @@ jpi {
 
 buildFrontEnd.dependsOn(npm_install)
 jpi.dependsOn(buildFrontEnd)
+server.dependsOn(buildFrontEnd)
 
 repositories {
     jcenter()
