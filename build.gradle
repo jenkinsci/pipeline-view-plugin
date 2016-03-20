@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "http://repo.jenkins-ci.org/releases/"
+        }
+    }
+
+    dependencies {
+        classpath "org.jenkins-ci.tools:gradle-jpi-plugin:0.15.0"
+    }
+}
+
+plugins {
+    id "com.moowork.node" version "0.12"
+}
+
+apply plugin: "org.jenkins-ci.jpi"
+
+group = "org.jenkins-ci.plugins"
+description = "Pipeline visualization plugin"
+
+node {
+    version = "5.7.1"
+    npmVersion = "3.8.0"
+    download = true
+}
+
+jenkinsPlugin {
+    shortName = "pipeline-view"
+    displayName = "Pipeline visualization plugin"
+
+    coreVersion = "1.609.3"
+
+    disabledTestInjection = true
+
+    developers {
+        developer {
+            id "bsideup"
+            name "Sergei Egorov"
+            email "bsideup@gmail.com"
+        }
+    }
+}
+
+task buildFrontEnd(type: NpmTask) {
+    args = ["run", "build"]
+}
+
+task serve(type: NpmTask) {
+    args = ["run", "serve"]
+}
+
+jpi {
+    from("${project.buildDir}/dist/pipe.js") {
+        into "/"
+    }
+}
+
+buildFrontEnd.dependsOn(npm_install)
+jpi.dependsOn(buildFrontEnd)
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "com.fasterxml.jackson.core:jackson-databind:2.6.4"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-api:1.14@jar"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-cps:1.14@jar"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-job:1.14@jar"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-support:1.14@jar"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-step-api:1.14@jar"
+    jenkinsPlugins "org.jenkins-ci.plugins.workflow:workflow-basic-steps:1.14@jar"
+}

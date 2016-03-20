@@ -1,0 +1,41 @@
+.pipeline {
+  margin-top: 20px;
+  padding: 20px;
+
+  a.node {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+
+  a.node > div {
+    line-height: 1px;
+  }
+
+  .erroredNode > div {
+    border-radius: 10px;
+    border: 2px inset red;
+    box-shadow: inset 0 0 16px 0 rgba(255, 0, 0, 0.2)
+  }
+}
+
+.tooltip[data-tooltip]:hover:after {
+  content: attr(data-tooltip);
+  pointer-events: none;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 100%;
+  white-space: nowrap;
+  z-index: 10000;
+  background-color: white;
+  border: 1px solid #C8C8C8;
+  border-radius: 2px;
+
+  display: inline-block;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:wf="/com/cloudbees/workflow">
+    <div nodesResource="${rootURL}/${it.target.url}pipeline-view/api/nodes/" nodeResource="${rootURL}/${it.target.url}/execution/node/">
+        <script type="text/javascript" src="${resURL}/plugin/pipeline-view/pipe.js"/>
+    </div>
+</j:jelly>
