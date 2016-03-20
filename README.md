@@ -1,4 +1,4 @@
-# jenkins-pipeline-view
+# jenkins-pipeline-view [![Gitter](https://badges.gitter.im/bsideup/jenkins-pipeline-view.svg)](https://gitter.im/bsideup/jenkins-pipeline-view?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 Jenkins Pipeline (aka Workflow) viewer
 
 ![screenshot](docs/screenshot.png)
