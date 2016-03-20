@@ -24,22 +24,27 @@ Frontend is a React application. It uses RxJS for polling data from the server a
 
 ## Development
 First, you need running Jenkins. You can do it in 3 ways:
+
 1. With Gradle:
 ```
 ./gradlew server
 ```
-1. With Docker Compose:
+
+2. With Docker Compose:
 ```
 docker-compose up
 ```
-1. Reusing existing Jenkins with already installed plugin (if you want to hack on the frontend only).
+
+3. Reusing existing Jenkins with already installed plugin (if you want to hack on the frontend only).
 
 Then, start webpack-dev-server:
+
 1. With NPM:
 ```
 npm run serve
 ```
-1. With Gradle (it will call NPM under the hood) (**NOTE:** `serve` is **not** a typo ):
+
+2. With Gradle (it will call NPM under the hood) (**NOTE:** `serve` is **not** a typo ):
 ```
 ./gradlew serve
 ```
