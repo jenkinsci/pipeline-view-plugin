@@ -29,6 +29,21 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class PipelineViewApi extends Api {
+
+    private static final ObjectMapper objectMapper = new ObjectMapper().setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE)
+            .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+            .addMixIn(FlowNode.class, FlowNodeMixin.class)
+            .addMixIn(Action.class, ActionMixin.class)
+            .addMixIn(StageAction.class, StageActionMixin.class)
+            .addMixIn(TimingAction.class, TimingActionMixin.class)
+            .addMixIn(LabelAction.class, LabelActionMixin.class)
+            .addMixIn(PauseAction.class, PauseActionMixin.class)
+            .addMixIn(WorkspaceAction.class, WorkspaceActionMixin.class)
+            .addMixIn(ThreadNameAction.class, ThreadNameActionMixin.class)
+            .addMixIn(StepNode.class, StepNodeMixin.class)
+            .addMixIn(StepDescriptor.class, StepDescriptorMixin.class);
+
     private final WorkflowRun target;
 
     public PipelineViewApi(WorkflowRun target) {
@@ -37,22 +52,6 @@ public class PipelineViewApi extends Api {
     }
 
     public void doNodes(StaplerRequest req, StaplerResponse rsp) throws IOException {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
-        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-
-        objectMapper.addMixIn(FlowNode.class, FlowNodeMixin.class);
-        objectMapper.addMixIn(Action.class, ActionMixin.class);
-        objectMapper.addMixIn(StageAction.class, StageActionMixin.class);
-        objectMapper.addMixIn(TimingAction.class, TimingActionMixin.class);
-        objectMapper.addMixIn(LabelAction.class, LabelActionMixin.class);
-        objectMapper.addMixIn(PauseAction.class, PauseActionMixin.class);
-        objectMapper.addMixIn(WorkspaceAction.class, WorkspaceActionMixin.class);
-        objectMapper.addMixIn(ThreadNameAction.class, ThreadNameActionMixin.class);
-        objectMapper.addMixIn(StepNode.class, StepNodeMixin.class);
-        objectMapper.addMixIn(StepDescriptor.class, StepDescriptorMixin.class);
-
         rsp.setContentType("application/json");
 
         SortedSet<FlowNode> sortedNodes = new TreeSet<>(new Comparator<FlowNode>() {
