@@ -10,7 +10,7 @@ Currently plugin is in alpha stage and not released yet. However, you can build 
 ./gradlew build
 ```
 
-Then just use `build/dist/pipeline-view.hpi` as any other Jenkins plugin.
+Then just use `build/libs/pipeline-view.hpi` as any other Jenkins plugin.
 
 # Architecture
 Plugin contains two parts - backend and frontend.
