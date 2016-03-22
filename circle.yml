@@ -1,0 +1,7 @@
+general:
+  artifacts:
+    - "build/libs/pipeline-view.hpi"
+
+dependencies:
+  cache_directories:
+    - "node_modules/"
