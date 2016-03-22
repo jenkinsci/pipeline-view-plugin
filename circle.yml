@@ -2,14 +2,7 @@ machine:
   java:
     version: openjdk7
 
-general:
-  artifacts:
-    - "build/libs/pipeline-view.hpi"
-
 test:
   override:
     - ./gradlew --console=plain build
-
-dependencies:
-  cache_directories:
-    - "node_modules/"
+    - mv build/libs/*.hpi $CIRCLE_ARTIFACTS
