@@ -1,10 +1,10 @@
-# jenkins-pipeline-view [![Gitter](https://badges.gitter.im/bsideup/jenkins-pipeline-view.svg)](https://gitter.im/bsideup/jenkins-pipeline-view?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Circle CI](https://circleci.com/gh/bsideup/jenkins-pipeline-view/tree/master.svg?style=svg)](https://circleci.com/gh/bsideup/jenkins-pipeline-view/tree/master)
+# jenkins-pipeline-view [![Gitter](https://badges.gitter.im/jenkinsci/jenkins-pipeline-view.svg)](https://gitter.im/jenkinsci/jenkins-pipeline-view?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Circle CI](https://circleci.com/gh/jenkinsci/jenkins-pipeline-view/tree/master.svg?style=svg)](https://circleci.com/gh/jenkinsci/jenkins-pipeline-view/tree/master)
 Jenkins Pipeline (aka Workflow) viewer
 
 ![screenshot](docs/screenshot.png)
 
 # Installation
-Currently plugin is in alpha stage and not released yet. However, you can download the latest build from CircleCI: https://circleci.com/gh/bsideup/jenkins-pipeline-view/tree/master . Navigate to the latest green build, select "Artifacts" tab and download `pipeline-view.hpi`.
+Currently plugin is in alpha stage and not released yet. However, you can download the latest build from CircleCI: https://circleci.com/gh/jenkinsci/jenkins-pipeline-view/tree/master . Navigate to the latest green build, select "Artifacts" tab and download `pipeline-view.hpi`.
 
 you can also build it yourself to get `*.hpi` file. Luckily, it's as simple as:
 
