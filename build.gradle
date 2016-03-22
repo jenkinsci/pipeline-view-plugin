@@ -12,7 +12,9 @@ buildscript {
 }
 
 plugins {
+    id "java"
     id "com.moowork.node" version "0.12"
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
 }
 
 apply plugin: "org.jenkins-ci.jpi"
@@ -24,6 +26,27 @@ node {
     version = "5.7.1"
     npmVersion = "3.8.0"
     download = true
+}
+
+shadowJar {
+    relocate 'com.fasterxml.jackson', 'com.github.bsideup.jenkins.pipeline.ui.com.fasterxml.jackson'
+
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/maven/**/**'
+    exclude 'META-INF/services/com.fasterxml.jackson.*'
+
+    dependencies {
+        include(dependency('com.fasterxml.jackson.*:.*'))
+    }
+}
+
+jpi {
+    classpath = shadowJar.outputs
+
+    from("${project.buildDir}/dist/pipe.js") {
+        into "/"
+    }
 }
 
 jenkinsPlugin {
@@ -49,12 +72,6 @@ task buildFrontEnd(type: NpmTask) {
 
 task serve(type: NpmTask) {
     args = ["run", "serve"]
-}
-
-jpi {
-    from("${project.buildDir}/dist/pipe.js") {
-        into "/"
-    }
 }
 
 buildFrontEnd.dependsOn(npm_install)
