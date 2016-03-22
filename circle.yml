@@ -6,13 +6,9 @@ general:
   artifacts:
     - "build/libs/pipeline-view.hpi"
 
-dependencies:
-  override:
-    - ./gradlew resolveAllDependencies
-
 test:
   override:
-    - ./gradlew --offline build
+    - ./gradlew build
 
 dependencies:
   cache_directories:
