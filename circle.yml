@@ -8,7 +8,7 @@ general:
 
 test:
   override:
-    - ./gradlew build
+    - ./gradlew --console=plain build
 
 dependencies:
   cache_directories:
