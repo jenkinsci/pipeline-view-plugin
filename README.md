@@ -1,12 +1,24 @@
-# pipeline-view-plugin [![Gitter](https://badges.gitter.im/jenkinsci/pipeline-view-plugin.svg)](https://gitter.im/jenkinsci/pipeline-view-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Circle CI](https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master.svg?style=svg)](https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master)
+# pipeline-view-plugin [![Gitter](https://badges.gitter.im/jenkinsci/pipeline-view-plugin.svg)](https://gitter.im/jenkinsci/pipeline-view-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Circle CI](https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master.svg?style=svg)](https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master) [![](https://jitpack.io/v/jenkinsci/pipeline-view-plugin.svg)](https://jitpack.io/#jenkinsci/pipeline-view-plugin)
 Jenkins Pipeline (aka Workflow) viewer
 
 ![screenshot](docs/screenshot.png)
 
 # Installation
-Currently plugin is in alpha stage and not released yet. However, you can download the latest build from CircleCI: https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master . Navigate to the latest green build, select "Artifacts" tab and download `pipeline-view.hpi`.
+Currently plugin is in alpha stage and not released yet. However, there are some options to download plugin as HPI:
 
-you can also build it yourself to get `*.hpi` file. Luckily, it's as simple as:
+## JitPack
+You can use JitPack to download the latest build of the plugin:
+
+https://jitpack.io/com/github/jenkinsci/pipeline-view-plugin/master-SNAPSHOT/pipeline-view-plugin-master-SNAPSHOT.hpi
+
+## CircleCI
+You can download the latest build from CircleCI: 
+
+https://circleci.com/gh/jenkinsci/pipeline-view-plugin/tree/master 
+Navigate to the latest green build, select "Artifacts" tab and download `pipeline-view.hpi`.
+
+## Build it yourself
+It is also possible to build it yourself to get `*.hpi` file. Luckily, it's as simple as:
 
 ```bash
 ./gradlew build
