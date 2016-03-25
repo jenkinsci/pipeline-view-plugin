@@ -4,7 +4,11 @@ Jenkins Pipeline (aka Workflow) viewer
 ![screenshot](docs/screenshot.png)
 
 # Installation
-Currently plugin is in alpha stage and not released yet. However, there are some options to download plugin as HPI:
+
+## Jucies
+Currently plugin is in alpha stage and available in Jucies ( https://github.com/jucies/releases ), id `pipeline-view`.
+
+Also, there are some options to download plugin as HPI:
 
 ## JitPack
 You can use JitPack to download the latest build of the plugin:
