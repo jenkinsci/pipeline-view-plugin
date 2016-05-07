@@ -19,7 +19,7 @@ export default class Pipeline extends React.Component {
         g.setDefaultEdgeLabel(() => ({}));
 
         g.setGraph({
-            nodesep: 10,
+            nodesep: 30,
             ranksep: 10,
             rankdir: "LR",
             // align: "UL"

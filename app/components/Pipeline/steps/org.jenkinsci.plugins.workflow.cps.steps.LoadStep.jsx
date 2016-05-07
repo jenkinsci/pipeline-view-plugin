@@ -5,6 +5,10 @@ export default function({ node }) {
         return false;
     }
 
+    if (node["@class"] == "org.jenkinsci.plugins.workflow.cps.nodes.StepEndNode") {
+        return false;
+    }
+
     return (
         <div style={{ padding: 2 }}>
             <svg width="48px" viewBox="50.0 0 614.06085 403.5986">
