@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import dagre from "dagre";
 import d3 from "d3-shape";
 
-export default class Graph extends React.Component {
+const lineInterpolation = d3.line().x(d => d.x).y(d => d.y).curve(d3.curveBundle);
 
-    lineInterpolation = d3.line().x(d => d.x).y(d => d.y).curve(d3.curveBundle);
+export default class Graph extends React.Component {
 
     isParent(g, nodeId) {
         const children = g.children(nodeId);

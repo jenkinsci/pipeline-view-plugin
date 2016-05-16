@@ -4,6 +4,15 @@
     "browser": true,
     "node": false
   },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "classes": true,
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   "plugins": [
     "react"
   ],
