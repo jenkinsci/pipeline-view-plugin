@@ -71,7 +71,7 @@ module.exports = {
                 rewrite: (req) => req.url = req.url.substring(req.url.indexOf("/plugin/pipeline-view/"))
             },
             "*": {
-                target: "http://localhost:8080/",
+                target: process.env.JENKINS_URL || "http://localhost:8080/",
                 secure: false
             }
         }
