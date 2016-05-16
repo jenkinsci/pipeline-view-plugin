@@ -49,7 +49,7 @@ export default class Graph extends React.Component {
                 points = [{ x: 0, y: 0 }];
             }
 
-            this.refs[this.getEdgeRef(edgeId)].setAttribute("d", this.lineInterpolation(points));
+            this.refs[this.getEdgeRef(edgeId)].setAttribute("d", lineInterpolation(points));
         }
 
         let maxWidth = 0;
