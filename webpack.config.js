@@ -31,12 +31,19 @@ module.exports = {
                 }
             },
             {
-                test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.eot$|\.woff$|\.woff2$|\.ttf$/,
+                test: /\.jpe?g$|\.gif$|\.png$|\.eot$|\.woff$|\.woff2$|\.ttf$/,
                 loader: "file"
             },
             {
+                test: /\.svg$/,
+                loader: 'svg-sprite?' + JSON.stringify({
+                    name: '[path]_[hash]',
+                    prefixize: true
+                })
+            },
+            {
                 test: /\.(c|le)ss$/,
-                loader: "style!css?modules&sourceMap!less?sourceMap"
+                loader: "style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap"
             }
         ]
     },
@@ -64,7 +71,7 @@ module.exports = {
                 rewrite: (req) => req.url = req.url.substring(req.url.indexOf("/plugin/pipeline-view/"))
             },
             "*": {
-                target: "http://localhost:8080/",
+                target: process.env.JENKINS_URL || "http://localhost:8080/",
                 secure: false
             }
         }
