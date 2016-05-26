@@ -3,6 +3,9 @@ Jenkins Pipeline (aka Workflow) viewer
 
 ![screenshot](docs/screenshot.png)
 
+# Requirements
+ * Java 8
+
 # Installation
 
 ## Jucies
