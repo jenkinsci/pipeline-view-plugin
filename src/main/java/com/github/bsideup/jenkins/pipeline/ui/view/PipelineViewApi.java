@@ -54,9 +54,11 @@ public class PipelineViewApi extends Api {
     public void doNodes(StaplerRequest req, StaplerResponse rsp) throws IOException {
         rsp.setContentType("application/json");
 
-        SortedSet<FlowNode> sortedNodes = new TreeSet<>(new Comparator<FlowNode>() {
+        SortedSet<FlowNode> sortedNodes = new TreeSet<FlowNode>(new Comparator<FlowNode>() {
             public int compare(FlowNode node1, FlowNode node2) {
-                return Integer.compare(parseIota(node1), parseIota(node2));
+                int x = parseIota(node1);
+                int y = parseIota(node2);
+                return (x < y) ? -1 : ((x == y) ? 0 : 1);
             }
 
             private int parseIota(FlowNode node) {

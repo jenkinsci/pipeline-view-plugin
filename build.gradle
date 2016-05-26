@@ -22,6 +22,9 @@ apply plugin: "org.jenkins-ci.jpi"
 group = "org.jenkins-ci.plugins"
 description = "Pipeline visualization plugin"
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 node {
     version = "5.7.1"
     npmVersion = "3.8.0"
