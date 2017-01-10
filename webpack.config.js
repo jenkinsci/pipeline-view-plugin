@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-    debug: true,
+    debug: false,
     cache: true,
     devtool: "source-map",
     entry: {
@@ -26,9 +26,6 @@ module.exports = {
                 test: /\.js|\.jsx$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
-                query: {
-                    presets: ["es2015-loose", "react", "stage-0"]
-                }
             },
             {
                 test: /\.jpe?g$|\.gif$|\.png$|\.eot$|\.woff$|\.woff2$|\.ttf$/,
@@ -47,14 +44,10 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            "process.env": {
-                "NODE_ENV": JSON.stringify("production")
-            }
-        })
-    ],
     resolve: {
+        alias: {
+            "rx": "rxjs"
+        },
         root: [
             path.resolve(__dirname, "node_modules")
         ],
@@ -63,6 +56,7 @@ module.exports = {
     devServer: {
         port: 3000,
         host: "0.0.0.0",
+        inline: true,
         proxy: {
             // Ugly hack to workaround Jenkins's static file URLs
             "*/plugin/pipeline-view/pipe.js": {

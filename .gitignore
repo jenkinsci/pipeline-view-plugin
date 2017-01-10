@@ -11,3 +11,9 @@ npm-debug.log
 *.ipr
 *.iws
 .idea/
+
+.classpath
+.project
+.settings/
+.vscode/
+bin/

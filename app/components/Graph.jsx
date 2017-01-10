@@ -100,7 +100,7 @@ export default class Graph extends React.Component {
             <div style={{ position: "relative" }}>
                 <svg width="100%" height="100%">
                     {g.edges().map(id => (
-                        <path key={`${id.v}=>${id.w}`} ref={this.getEdgeRef(id)} stroke="#888" stroke-width="1" fill="none"/>
+                        <path key={`${id.v}=>${id.w}`} ref={this.getEdgeRef(id)} stroke="#888" strokeWidth="1" fill="none"/>
                     ))}
                 </svg>
                 {elements.map(node => {

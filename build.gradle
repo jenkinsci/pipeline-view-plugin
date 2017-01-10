@@ -1,23 +1,9 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven {
-            url "http://repo.jenkins-ci.org/releases/"
-        }
-    }
-
-    dependencies {
-        classpath "org.jenkins-ci.tools:gradle-jpi-plugin:0.15.0"
-    }
-}
-
 plugins {
     id "java"
-    id "com.moowork.node" version "0.12"
+    id "com.moowork.node" version "1.0.1"
     id 'com.github.johnrengelman.shadow' version '1.2.3'
+    id "org.jenkins-ci.jpi" version "0.21.0"
 }
-
-apply plugin: "org.jenkins-ci.jpi"
 
 group = "org.jenkins-ci.plugins"
 description = "Pipeline visualization plugin"
@@ -26,8 +12,7 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 node {
-    version = "5.7.1"
-    npmVersion = "3.8.0"
+    version = "6.9.4"
     download = true
 }
 
@@ -70,15 +55,15 @@ jenkinsPlugin {
     }
 }
 
-task buildFrontEnd(type: NpmTask) {
+task buildFrontEnd(type: YarnTask) {
     args = ["run", "build"]
 }
 
-task serve(type: NpmTask) {
+task serve(type: YarnTask) {
     args = ["run", "serve"]
 }
 
-buildFrontEnd.dependsOn(npm_install)
+buildFrontEnd.dependsOn(yarn_install)
 jpi.dependsOn(buildFrontEnd)
 server.dependsOn(buildFrontEnd)
 
