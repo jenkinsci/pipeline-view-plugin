@@ -1,7 +1,7 @@
 {
   "scripts": {
     "serve": "webpack-dev-server",
-    "build": "webpack --colors --progress -p"
+    "build": "NODE_ENV=production webpack --colors --progress -p"
   },
   "dependencies": {
     "d3-shape": "^0.6.0",
