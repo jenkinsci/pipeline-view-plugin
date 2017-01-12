@@ -30,17 +30,28 @@ export default class Pipeline extends React.Component {
         let parent = null;
 
         for (let node of nodes) {
-            let stageAction = node.getAction("org.jenkinsci.plugins.workflow.support.steps.StageStepExecution$StageActionImpl");
+            if (node.descriptor && node.descriptor.id === "org.jenkinsci.plugins.workflow.support.steps.StageStep") {
+                const nodeClass = node["@class"];
+                const hasBody = node.getAction("org.jenkinsci.plugins.workflow.actions.BodyInvocationAction");
+                if (nodeClass === "org.jenkinsci.plugins.workflow.cps.nodes.StepStartNode") {
+                    if (!hasBody) {
+                        parent = { id: "stage_" + node.id, label: undefined, isStage: true };
+                        g.setNode(parent.id, parent);
+                    }
 
-            if (stageAction) {
-                parent = "stage_" + node.id;
-                const stageName = stageAction.get("stageName");
+                    const labelAction = node.getAction("org.jenkinsci.plugins.workflow.actions.LabelAction");
+                    if (labelAction) {
+                        parent.label = labelAction.get("displayName");
+                    }
+                }
 
-                g.setNode(parent, { id: parent, label: stageName, isStage: true });
-            } else if (parent != null && node["@class"] != "org.jenkinsci.plugins.workflow.graph.FlowEndNode") {
-                g.setParent(node.id, parent);
+                if (nodeClass == "org.jenkinsci.plugins.workflow.cps.nodes.StepEndNode" && !hasBody) {
+                    parent = null;
+                }
+            } else if (parent != null) {
+                g.setParent(node.id, parent.id);
 
-                (stages[parent] = stages[parent] || []).push(node);
+                (stages[parent.id] = stages[parent.id] || []).push(node);
             }
             g.setNode(node.id, { id: node.id, flowNode: node });
 
